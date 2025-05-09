@@ -43,6 +43,38 @@ def main():
     print("DFS Traversal:")
     g.dfs_recursive(0)
 
+
+
+
+
+
+*********************************************************************************************************************
+    def bfs_recursive(self, queue, visited):
+        if not queue:
+            return
+        
+        node = queue.popleft()
+        if node not in visited:
+            print(node, end=' ')
+            visited.add(node)
+            for neighbor in self.graph[node]:
+                if neighbor not in visited:
+                    queue.append(neighbor)
+        
+        # Recursive call with updated queue
+        self.bfs_recursive(queue, visited)
+
+def main():
+    g = Graph()
+    g.add_edge(0, 1)
+    g.add_edge(0, 2)
+    g.add_edge(1, 3)
+    g.add_edge(2, 4)
+
+    print("Recursive BFS Traversal:")
+    start_node = 0
+    g.bfs_recursive(deque([start_node]), set())
+
     print("\nBFS Traversal:")
     g.bfs(0)
 
